@@ -1,0 +1,30 @@
+{
+  "name": "worldcoinindex-api",
+  "version": "0.1.0",
+  "description": "WorldCoinIndex API Wrapper for Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhinavk99/worldcoinindex-api.git"
+  },
+  "keywords": [
+    "WorldCoinIndex",
+    "Cryptocurrency"
+  ],
+  "author": "Abhinav Kasamsetty <abhinavkasamsetty@gmail.com> (http://github.com/abhinavk99)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abhinavk99/worldcoinindex-api/issues"
+  },
+  "homepage": "https://github.com/abhinavk99/worldcoinindex-api#readme",
+  "dependencies": {
+    "node-fetch": "^1.7.3"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.1.0"
+  }
+}
