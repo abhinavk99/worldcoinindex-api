@@ -60,7 +60,7 @@ Get ticker information
 ```javascript
 const client = new WorldCoinIndex('key goes here');
 client.getTicker(['ethbtc', 'ltcbtc'], 'btc').then(console.log).catch(console.error);
-client.getTicker(['veneth'], 'eth').then(console.log).catch(console.error);
+client.getTicker(['venbtc'], 'btc').then(console.log).catch(console.error);
 ```
 
 Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** ticker information
@@ -78,7 +78,6 @@ Get market information
 ```javascript
 const client = new WorldCoinIndex('key goes here');
 client.getTicker('btc').then(console.log).catch(console.error);
-client.getTicker('eth').then(console.log).catch(console.error);
 ```
 
 Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** market information
