@@ -17,17 +17,35 @@ class WorldCoinIndex {
 
 	/**
 	 *	Get ticker information
-	 *	@param {string[]} markets list of currency markets
+	 *	@param {string} ticker currency ticker
 	 *	@param {string} fiat currency being traded with
 	 *	@return {Object} ticker information
 	 *	@example
 	 *	const client = new WorldCoinIndex('key goes here');
-	 *	client.getTicker(['ethbtc', 'ltcbtc'], 'btc').then(console.log).catch(console.error);
-	 *	client.getTicker(['veneth'], 'eth').then(console.log).catch(console.error);
+	 *	client.getTicker('eth', 'btc').then(console.log).catch(console.error);
+	 *	client.getTicker('ltc', 'btc').then(console.log).catch(console.error);
 	 */
-	getTicker(markets, fiat) {
-		// Converts array of markets to label string needed for API call
-		var label = markets.join('-');
+	getTicker(ticker, fiat) {
+		// Converts ticker to label string needed for API call
+		var label = ticker + fiat;
+		return fetch(`${this.baseUrl}ticker?key=${this.key}&label=${label}&fiat=${fiat}`).then(res => 
+			res.json()
+		);
+	}
+
+	/**
+	 *	Get information on multiple tickers
+	 *	@param {string[]} tickers list of currency tickers
+	 *	@param {string} fiat currency being traded with
+	 *	@return {Object} information on multiple tickers
+	 *	@example
+	 *	const client = new WorldCoinIndex('key goes here');
+	 *	client.getTickers(['eth', 'ltc'], 'btc').then(console.log).catch(console.error);
+	 *	client.getTickers(['ven'], 'btc').then(console.log).catch(console.error);
+	 */
+	getTickers(tickers, fiat) {
+		// Converts array of tickers to label string needed for API call
+		var label = tickers.join(fiat + '-') + fiat;
 		return fetch(`${this.baseUrl}ticker?key=${this.key}&label=${label}&fiat=${fiat}`).then(res => 
 			res.json()
 		);

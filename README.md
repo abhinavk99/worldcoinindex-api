@@ -14,7 +14,8 @@ WorldCoinIndex API documentation can be found at <https://www.worldcoinindex.com
 const WorldCoinIndex = require('worldcoinindex-api');
 const client = new WorldCoinIndex('your key goes here');
 
-client.getTicker(['ethbtc', 'ltcbtc'], 'btc').then(console.log).catch(console.error);
+client.getTicker('eth', 'btc').then(console.log).catch(console.error);
+client.getTickers(['eth', 'ltc'], 'btc').then(console.log).catch(console.error);
 client.getMarkets('btc').then(console.log).catch(console.error);
 ```
 
@@ -30,6 +31,7 @@ client.getMarkets('btc').then(console.log).catch(console.error);
 
 -   [constructor](#constructor)
 -   [getTicker](#getticker)
+-   [getTickers](#gettickers)
 -   [getMarkets](#getmarkets)
 
 ### constructor
@@ -52,18 +54,37 @@ Get ticker information
 
 **Parameters**
 
--   `markets` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** list of currency markets
+-   `ticker` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** currency ticker
 -   `fiat` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** currency being traded with
 
 **Examples**
 
 ```javascript
 const client = new WorldCoinIndex('key goes here');
-client.getTicker(['ethbtc', 'ltcbtc'], 'btc').then(console.log).catch(console.error);
-client.getTicker(['venbtc'], 'btc').then(console.log).catch(console.error);
+client.getTicker('eth', 'btc').then(console.log).catch(console.error);
+client.getTicker('ltc', 'btc').then(console.log).catch(console.error);
 ```
 
 Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** ticker information
+
+### getTickers
+
+Get information on multiple tickers
+
+**Parameters**
+
+-   `tickers` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** list of currency tickers
+-   `fiat` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** currency being traded with
+
+**Examples**
+
+```javascript
+const client = new WorldCoinIndex('key goes here');
+client.getTickers(['eth', 'ltc'], 'btc').then(console.log).catch(console.error);
+client.getTickers(['ven'], 'btc').then(console.log).catch(console.error);
+```
+
+Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** information on multiple tickers
 
 ### getMarkets
 
@@ -78,6 +99,7 @@ Get market information
 ```javascript
 const client = new WorldCoinIndex('key goes here');
 client.getTicker('btc').then(console.log).catch(console.error);
+client.getTicker('eth').then(console.log).catch(console.error);
 ```
 
 Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** market information
